@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import {Icon} from 'react-fa'
 
 import '../styles.css';
 
@@ -25,7 +26,7 @@ class Shop extends Component {
 
         if (itemCount > 0) {
             checkoutLink =  <Link className="checkout-link" to="/checkout">
-                                <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+                                <Icon name="shopping-cart" />
                                 &nbsp;&nbsp;
                                 {itemCount} item(s)
                             </Link>
