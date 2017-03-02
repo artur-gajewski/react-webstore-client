@@ -16,7 +16,11 @@ class Cart extends Component {
         const total = this.props.selectedItems.reduce( (prev, curr) => prev + curr.price, 0 ).toFixed(2);
 
         const itemsSelected = this.props.selectedItems.map((item, idx) => {
-            return <li key={idx}>{item.title}<button title="Remove this item" onClick={() => this.onRemoveItemFromCart(idx)}> - </button></li>
+            return (
+                <li key={idx}>{item.title}
+                    <button title="Remove this item" onClick={() => this.onRemoveItemFromCart(idx)}> - </button>
+                </li>
+            );
         });
 
         let linkToInvoice = null;

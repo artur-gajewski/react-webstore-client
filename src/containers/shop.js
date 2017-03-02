@@ -25,11 +25,13 @@ class Shop extends Component {
         let checkoutLink = null;
 
         if (itemCount > 0) {
-            checkoutLink =  <Link className="checkout-link" to="/checkout">
-                                <Icon name="shopping-cart" />
-                                &nbsp;&nbsp;
-                                {itemCount} item(s)
-                            </Link>
+            checkoutLink = (
+                <Link className="checkout-link" to="/checkout">
+                    <Icon name="shopping-cart" />
+                    &nbsp;&nbsp;
+                    {itemCount} item(s)
+                </Link>
+            );
         }
 
         return (

@@ -23,18 +23,20 @@ class Shelf extends Component {
         if (!this.props.shelfItems.length === 0) return null;
 
         const shelfItems = this.props.shelfItems.map((item, idx) => {
-            return <div key={item.productId} className="product-card">
-                        <div className="product-image">
-                            <img role="presentation" src={item.imageUrl} />
-                        </div>
-                        <div className="product-info">
-                            <h5>{item.title}</h5>
-                            <h6>{item.price.toFixed(2)} €</h6>
-                            <h7>
-                                <button className="add-button" onClick={() => this.onAddItemToCart(item)}> Add to cart </button>
-                            </h7>
-                        </div>
+            return (
+                <div key={item.productId} className="product-card">
+                    <div className="product-image">
+                        <img role="presentation" src={item.imageUrl} />
                     </div>
+                    <div className="product-info">
+                        <h5>{item.title}</h5>
+                        <h6>{item.price.toFixed(2)} €</h6>
+                        <h7>
+                            <button className="add-button" onClick={() => this.onAddItemToCart(item)}> Add to cart </button>
+                        </h7>
+                    </div>
+                </div>
+            );
         });
 
         return (
@@ -42,7 +44,6 @@ class Shelf extends Component {
                 <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
                 {shelfItems}
             </section>
-
         );
     }
 }
