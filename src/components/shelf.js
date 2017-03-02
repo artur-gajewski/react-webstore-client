@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AlertContainer from 'react-alert';
+import './shelf.css';
 
 class Shelf extends Component {
     constructor(props) {

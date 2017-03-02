@@ -3,13 +3,12 @@ import { Link } from 'react-router'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {Icon} from 'react-fa'
+import Shelf from '../components/shelf';
 
-import '../styles.css';
+import './shop.css';
 
 import * as shelfActions from '../ducks/shelf';
 import * as cartActions from '../ducks/cart';
-
-import Shelf from '../components/shelf';
 
 class Shop extends Component {
 
