@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Shelf from '../components/shelf';
 import * as cartActions from '../ducks/cart';
 import './shop.css';
 
-class Shop extends Component {
+class Cart extends Component {
 
     render() {
+        const total = this.props.cart.reduce( (prev, curr) => prev + curr.price, 0 ).toFixed(2);
         return (
             <div>
-                <Shelf
-                    addProduct={this.props.cartActions.addToCart}
-                    shelfItems={this.props.shelf}
-                />
+                Total: {total}
             </div>
         );
     }
@@ -21,7 +18,7 @@ class Shop extends Component {
 
 function mapStateToProps(state) {
     return {
-        shelf: state.shelf,
+        cart: state.cart,
     };
 }
 
@@ -31,4 +28,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Shop);
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

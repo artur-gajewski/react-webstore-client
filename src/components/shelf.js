@@ -5,7 +5,7 @@ import './shelf.css';
 class Shelf extends Component {
     constructor(props) {
         super(props);
-        this.onAddItemToCart = this.onAddItemToCart.bind(this);
+        this.onAddProductToCart = this.onAddProductToCart.bind(this);
         this.alertOptions = {
             offset: 14,
             position: 'bottom right',
@@ -15,25 +15,25 @@ class Shelf extends Component {
         };
     }
 
-    onAddItemToCart(item) {
-        this.msg.success('Added ' + item.title + ' to your cart!');
-        this.props.addItem(item);
+    onAddProductToCart(product) {
+        this.msg.success('Added ' + product.title + ' to your cart!');
+        this.props.addProduct(product);
     }
 
     render() {
         if (!this.props.shelfItems.length === 0) return null;
 
-        const shelfItems = this.props.shelfItems.map((item, idx) => {
+        const shelfItems = this.props.shelfItems.map((product, idx) => {
             return (
-                <div key={item.productId} className="product-card">
+                <div key={product.productId} className="product-card">
                     <div className="product-image">
-                        <img role="presentation" src={item.imageUrl} />
+                        <img role="presentation" src={product.imageUrl} />
                     </div>
                     <div className="product-info">
-                        <h5>{item.title}</h5>
-                        <h6>{item.price.toFixed(2)} €</h6>
+                        <h5>{product.title}</h5>
+                        <h6>{product.price.toFixed(2)} €</h6>
                         <h7>
-                            <button className="add-button" onClick={() => this.onAddItemToCart(item)}> Add to cart </button>
+                            <button className="add-button" onClick={() => this.onAddProductToCart(product)}> Add to cart </button>
                         </h7>
                     </div>
                 </div>

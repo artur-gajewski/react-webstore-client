@@ -1,24 +1,24 @@
 export default(state = [], payload) => {
     switch (payload.type) {
         case 'add':
-            return [...state, payload.item];
+            return [...state, payload.product];
         case 'remove':
-            return state.filter((item, idx) => idx !== payload.itemIndex);
+            return state.filter((product, idx) => idx !== payload.productIndex);
         default:
             return state;
     }
 };
 
-export const addToCart = (item) => {
+export const addToCart = (product) => {
     return {
         type: 'add',
-        item
+        product
     };
 };
 
-export const removeFromCart = (itemIndex) => {
+export const removeFromCart = (productIndex) => {
     return {
         type: 'remove',
-        itemIndex
+        productIndex
     };
 };

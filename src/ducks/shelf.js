@@ -2,24 +2,24 @@ import { List } from 'immutable';
 
 export default(state = List(), payload) => {
     switch (payload.type) {
-        case 'receive_items':
-            return payload.items
+        case 'receive_products':
+            return payload.products
         default:
             return state;
     }
 };
 
-function receiveItems(items) {
+function receiveProducts(products) {
     return {
-        type: 'receive_items',
-        items
+        type: 'receive_products',
+        products
     };
 }
 
-export function fetchItems() {
+export function fetchProducts() {
     return function(dispatch, getState) {
         dispatch(
-            receiveItems(
+            receiveProducts(
                 List([
                     {
                         productId: 1,
