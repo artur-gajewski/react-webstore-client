@@ -13,7 +13,7 @@ class Cart extends Component {
     }
 
     render() {
-        const total = this.props.selectedProducts.reduce( (prev, curr) => prev + curr.price, 0 ).toFixed(2);
+        const totalPrice = this.props.selectedProducts.reduce( (prev, curr) => prev + curr.price, 0 ).toFixed(2);
 
         const productsSelected = this.props.selectedProducts.map((product, idx) => {
             return (
@@ -27,7 +27,9 @@ class Cart extends Component {
         return (
             <div>
                 <h2>Your Shopping Cart:</h2>
-                <b>Total price:</b> {total} €
+                <div>
+                    <b>Total price:</b> {totalPrice} €
+                </div>
                 <ul>
                     {productsSelected}
                 </ul>
