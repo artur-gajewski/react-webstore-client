@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import Cart from '../components/cart';
 import * as cartActions from '../ducks/cart';
-import './shop.css';
+import './checkout.css';
 
-class Cart extends Component {
+class Checkout extends Component {
 
     render() {
         const total = this.props.cart.reduce( (prev, curr) => prev + curr.price, 0 ).toFixed(2);
+
         return (
             <div>
-                Total: {total}
+                <Cart
+                    removeProduct={this.props.cartActions.removeFromCart}
+                    selectedProducts={this.props.cart}
+                />
             </div>
         );
     }
@@ -28,4 +33,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

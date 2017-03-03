@@ -31,7 +31,6 @@ class Cart extends Component {
                 <ul>
                     {productsSelected}
                 </ul>
-                {linkToInvoice}
             </div>
         );
     }
