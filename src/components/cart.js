@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import { Icon } from 'react-fa';
 import './cart.css';
 
@@ -22,28 +21,31 @@ class Cart extends Component {
 
             return (
                 <div className="product-container" key={idx}>
-                    <div className="product">
-                        <div className="product-data product-photo">
-                            <img role="presentation" src={product.imageUrl} />
+                    <div className="product-data product-photo">
+                        <img role="presentation" src={product.imageUrl} />
+                    </div>
+                    <div className="product-data product-information">
+                        <div>
+                            {product.title}
                         </div>
-                        <div className="product-data product-information">
+                        <div className="product-id">
                             <div>
-                                {product.title}
-                            </div>
-                            <div className="product-id">
                                 Product ID: {product.productId}
                             </div>
-                        </div>
-                        <div className="product-data product-options">
                             <div>
-                                {productPrice} €
+                                {product.specs}
                             </div>
-                            <button className="remove-button" title="Remove this product" onClick={() => this.onRemoveProductFromCart(idx)}>
-                                <Icon name="trash" />
-                                &nbsp;&nbsp;
-                                Remove
-                            </button>
                         </div>
+                    </div>
+                    <div className="product-data product-options">
+                        <div>
+                            {productPrice} €
+                        </div>
+                        <button className="remove-button" title="Remove this product" onClick={() => this.onRemoveProductFromCart(idx)}>
+                            <Icon name="trash" />
+                            &nbsp;&nbsp;
+                            Remove
+                        </button>
                     </div>
                 </div>
             );

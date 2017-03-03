@@ -6,10 +6,7 @@ import * as cartActions from '../ducks/cart';
 import './checkout.css';
 
 class Checkout extends Component {
-
     render() {
-        const total = this.props.cart.reduce( (prev, curr) => prev + curr.price, 0 ).toFixed(2);
-
         return (
             <div>
                 <Cart
