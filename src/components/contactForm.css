@@ -1,21 +1,38 @@
 .contact-form {
-  display: flex;
-  flex-flow: row wrap;
-  width: 408px;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.form-row {
+    display: flex;
+    flex-grow: 1;
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.form-options {
+    display: flex;
+    justify-content: flex-end;
 }
 
 label {
-  width: 150px;
+    flex: 1;
 }
 
 input, textarea {
-  width: 250px;
-  margin-bottom: 7px;
+    flex: 4;
 }
 
 .form-submit-button {
-    flex-grow: 1;
     margin-top: 15px;
     font-size: 15px;
     font-weight: 200;
+}
+
+@media ( max-width: 700px ) {
+    .form-row {
+        display: flex;
+        flex-direction: column;
+        height: 40px;
+    }
 }

@@ -16,6 +16,7 @@ class Cart extends Component {
 
     handleSubmit = (shippingAddressValues) => {
         console.log(shippingAddressValues);
+        alert("Thank you, your order has been received.");
     }
 
     render() {
