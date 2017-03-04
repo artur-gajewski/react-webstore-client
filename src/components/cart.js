@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Icon } from 'react-fa';
+import ContactForm from './contactForm';
 import './cart.css';
 
 class Cart extends Component {
@@ -11,6 +12,10 @@ class Cart extends Component {
 
     onRemoveProductFromCart(product) {
         this.props.removeProduct(product);
+    }
+
+    handleSubmit = (shippingAddressValues) => {
+        console.log(shippingAddressValues);
     }
 
     render() {
@@ -67,6 +72,15 @@ class Cart extends Component {
                             {productsSelected}
                         </div>
                     </div>
+                </div>
+
+                <div className="contact-form-container">
+                    <div className="form-info">
+                        <Icon name="address-card-o" />
+                        &nbsp;&nbsp;
+                        Shipping address
+                    </div>
+                    <ContactForm onSubmit={this.handleSubmit} />
                 </div>
             </section>
         );

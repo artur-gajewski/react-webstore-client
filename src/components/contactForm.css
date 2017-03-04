@@ -1,0 +1,21 @@
+.contact-form {
+  display: flex;
+  flex-flow: row wrap;
+  width: 408px;
+}
+
+label {
+  width: 150px;
+}
+
+input, textarea {
+  width: 250px;
+  margin-bottom: 7px;
+}
+
+.form-submit-button {
+    flex-grow: 1;
+    margin-top: 15px;
+    font-size: 15px;
+    font-weight: 200;
+}
