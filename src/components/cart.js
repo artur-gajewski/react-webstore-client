@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import { Icon } from 'react-fa';
 import ContactForm from './contactForm';
-import './cart.css';
 
 class Cart extends Component {
     constructor(props) {
@@ -26,66 +26,169 @@ class Cart extends Component {
             const productPrice = product.price.toFixed(2);
 
             return (
-                <div className="product-container" key={idx}>
-                    <div className="product-data product-photo">
-                        <img role="presentation" src={product.imageUrl} />
-                    </div>
-                    <div className="product-data product-information">
+                <ProductContainer key={idx}>
+                    <ProductPhotoContainer>
+                        <ProductPhoto role="presentation" src={product.imageUrl} />
+                    </ProductPhotoContainer>
+                    <ProductInformation>
                         <div>
                             {product.title}
                         </div>
-                        <div className="product-id">
+                        <ProductId>
                             <div>
                                 Product ID: {product.productId}
                             </div>
-                            <div>
+                            <ProductSpecs>
                                 {product.specs}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="product-data product-options">
+                            </ProductSpecs>
+                        </ProductId>
+                    </ProductInformation>
+                    <ProductOptions>
                         <div>
                             {productPrice} €
                         </div>
-                        <button className="remove-button" title="Remove this product" onClick={() => this.onRemoveProductFromCart(idx)}>
+                        <RemoveButton title="Remove this product" onClick={() => this.onRemoveProductFromCart(idx)}>
                             <Icon name="trash" />
                             &nbsp;&nbsp;
                             Remove
-                        </button>
-                    </div>
-                </div>
+                        </RemoveButton>
+                    </ProductOptions>
+                </ProductContainer>
             );
         });
 
         return (
-            <section className="cart-section">
-                <div>
-                    <div className="cart-info">
-                        <Icon name="shopping-cart" />
-                        &nbsp;&nbsp;
-                        Your shopping cart
-                    </div>
-                    <div className="total-price">
-                        Total price: {totalPrice} €
-                    </div>
-                    <div className="cart-container">
-                        <div className="cart">
-                            {productsSelected}
-                        </div>
-                    </div>
-                </div>
-
-                <div className="contact-form-container">
-                    <div className="form-info">
+            <CartSection>
+                <CartInfo>
+                    <Icon name="shopping-cart" />
+                    &nbsp;&nbsp;
+                    Your shopping cart
+                </CartInfo>
+                <TotalPrice>
+                    Total price: {totalPrice} €
+                </TotalPrice>
+                <CartContainer>
+                    <CartItems>
+                        {productsSelected}
+                    </CartItems>
+                </CartContainer>
+                <ContactFormConatiner>
+                    <FormInfo>
                         <Icon name="address-card-o" />
                         &nbsp;&nbsp;
                         Shipping address
-                    </div>
+                    </FormInfo>
                     <ContactForm onSubmit={this.handleSubmit} />
-                </div>
-            </section>
+                </ContactFormConatiner>
+            </CartSection>
         );
     }
 }
+
+const ProductContainer = styled.div`
+    display: flex;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+
+    @media ( max-width: 630px ) {
+        flex-direction: column;
+    }
+`;
+
+const ProductData = styled.div`
+    padding: 20px;
+    min-width: 120px;
+`;
+
+const ProductPhotoContainer = styled.div`
+    min-width: 140px;
+`;
+
+const ProductPhoto = styled.img`
+    padding: 20px;
+    max-height: 120px;
+    max-width: 120px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media ( max-width: 630px ) {
+        height: auto;
+        max-width: 250px;
+        max-height: 300px;
+        border-right: 0px;
+        justify-content: flex-start; /* align horizontal */
+        align-items: flex-start; /* align vertical */
+        min-width: 125px;
+        padding-bottom: 0px;
+    }
+`;
+
+const ProductInformation = styled(ProductData)`
+    margin-top: 3px;
+    margin-bottom: 10px;
+
+    @media ( max-width: 630px ) {
+        padding-bottom: 0px;
+    }
+`;
+
+const ProductId = styled.div`
+    color: #777;
+    font-size: 12px;
+    margin-top: 5px;
+`;
+
+const ProductSpecs = styled.div`
+    margin-top: 5px;
+`;
+
+const ProductOptions = styled(ProductData)`
+    flex: 1;
+    justify-content: center; /* align horizontal */
+    min-width: 120px;
+`;
+
+const RemoveButton = styled.button`
+    font-size: 15px;
+    font-weight: 200;
+    margin-top: 5px;
+`;
+
+const CartSection = styled.section`
+    padding: 20px;
+    background-color: #FFF;
+    box-shadow: 0px 0px 1px 0px rgba(0,0,0,0.25);
+`;
+
+const CartInfo = styled.div`
+    font-size: 25px;
+    font-weight: 200;
+    margin-bottom: 20px;
+`;
+
+const TotalPrice = styled.div`
+    margin-bottom: 20px;
+`;
+
+const CartContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+`;
+
+const CartItems = styled.div`
+    flex-grow: 1;
+`;
+
+const ContactFormConatiner = styled.div`
+    margin-top: 20px;
+`;
+
+const FormInfo = styled.div`
+    font-size: 25px;
+    font-weight: 200;
+    margin-bottom: 20px;
+`;
 
 export default Cart;
